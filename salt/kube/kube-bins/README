@@ -1,0 +1,1 @@
+some manifests expect kubernetes binaries (namley, hyperkube) to exist in this directory
