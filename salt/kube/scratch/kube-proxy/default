@@ -1,0 +1,3 @@
+{% set daemon_args = " --master=http://kube-master:8080 " -%}
+{% set kubeconfig = "--kubeconfig=/var/lib/kube-proxy/kubeconfig" -%}
+DAEMON_ARGS="{{daemon_args}} {{kubeconfig}}"

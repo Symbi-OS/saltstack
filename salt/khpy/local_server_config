@@ -1,0 +1,13 @@
+#set module type
+[module]
+module=qemu_server
+module_class=QemuServer
+install_path=/opt/khpy
+module_path=%(install_path)s/modules/
+module_config=%(module_path)s/qemu_server.cfg
+[database]
+db_install_path=/opt
+path=%(db_install_path)s/khdb
+[debug]
+debug=False
+log=False

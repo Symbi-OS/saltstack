@@ -1,0 +1,11 @@
+DAEMON_ARGS=" \
+--system-container=/system --cgroup_root=/      \
+--allow-privileged=true          \ 
+--address=0.0.0.0                       \
+--api-servers=http://{{ pillar['kube-master'] }}:8080      \
+--config=/etc/kubernetes/manifests      \
+--enable-server \ 
+--register-node=true     \ 
+--cadvisor-port=0       \  
+--hostname-override={{ grains['id'] }}      \
+"

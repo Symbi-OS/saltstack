@@ -1,0 +1,32 @@
+#set module type
+[module]
+module=qemu_server
+module_class=QemuServer
+install_path=/opt/khpy
+module_path=%(install_path)s/modules/
+module_config=%(module_path)s/qemu_server.cfg
+[database]
+db_install_path=/opt
+path=%(db_install_path)s/khdb
+[debug]
+debug=False
+log=False
+[Qemu]
+instance_max=256
+pidfile_path=/tmp/khpid-qemu
+stdin_path=/tmp/khstdin-qemu
+stdout_path=/tmp/khstdout-qemu
+stderr_path=/tmp/khstderr-qemu
+perflog_path=/tmp/kh-perflog
+#server settings
+server_ip={{ grains['id'] }}
+server_port=3888
+gdb_baseport=3890
+#node allocation defaults
+default_ram=2
+default_cpu=2
+default_numa=2
+cmd=qemu-system-x86_64 -cpu host -enable-kvm 
+#perf settings
+perflog_path=/tmp/perflog
+perf_cmd=perfkvm --guest stat

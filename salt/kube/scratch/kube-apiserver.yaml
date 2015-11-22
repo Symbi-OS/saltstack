@@ -1,0 +1,33 @@
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {"name":"kube-apiserver"},
+"spec":{
+  "hostNetwork": true,
+  "containers":[
+    {
+      "name": "apiserver",
+      "image": "gcr.io/google_containers/hyperkube:v1.0.7",
+      "command": [
+              "/hyperkube",
+              "apiserver",
+              "--authorization-mode=AlwaysAllow",
+              "--allow-privileged=true",
+              "--etcd_servers=http://127.0.0.1:4001",
+              "--service-cluster-ip-range=={{ pillar['docker-subnet'] }}",
+              "--bind-address={{ grains['id'] }}",
+              "--insecure-bind-address=0.0.0.0",
+              "--v=2"
+        ],
+    "ports":[
+      { "name": "https",
+        "containerPort": 6433,
+        "hostPort": 6433},{
+       "name": "local",
+        "containerPort": 8080,
+        "hostPort": 8080}
+     ]
+    }  
+  ]
+ }
+}

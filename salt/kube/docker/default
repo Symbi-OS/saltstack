@@ -1,0 +1,2 @@
+DOCKER_OPTS=" --bridge=cbr0 --fixed-cidr=192.168.111.0/24 --iptables=false --ip-masq=false -s=devicemapper "
+

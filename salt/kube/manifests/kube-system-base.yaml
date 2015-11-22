@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-base
+  namespace: kube-system
+spec:
+  hostNetwork: true
+  containers:
+    - name: "etcd"
+      image: "b.gcr.io/kuar/etcd:2.1.1"
+      args:
+        - "--advertise-client-urls=http://127.0.0.1:4001"
+        - "--listen-client-urls=http://127.0.0.1:4001"
+        - "--listen-peer-urls=http://127.0.0.1:2380"
+        - "--name=etcd"
+    - name: "kube-scheduile"
+      image: "gcr.io/google_containers/hyperkube:v1.0.7"
+      command:
+        - "/hyperkube"
+        - "scheduler"
+        - "--address=0.0.0.0"
+        - "--master=http://127.0.0.1:8080"
+    - name: "kube-controller-manager"
+      image: "gcr.io/google_containers/hyperkube:v1.0.7"
+      command:
+        - "/hyperkube"
+        - "controller-manager"
+        - "--master=http://127.0.0.1:8080"
+        - "--v=2"
+    - name: "kube-apiserver"
+      image: "b.gcr.io/kuar/kube-apiserver:1.0.3"
+      args:
+        - "--allow-privileged=true"
+        - "--etcd-servers=http://127.0.0.1:4001"
+        - "--insecure-bind-address=0.0.0.0"
+        - "--service-cluster-ip-range=192.168.222.0/24"
+        - "--v=2"

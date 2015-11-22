@@ -1,0 +1,3 @@
+[Qemu]
+server_ip={{ grains['id'] }}
+server_port=3888

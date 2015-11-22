@@ -1,0 +1,58 @@
+ect-server run and defined on ALL kube-* products: https://www.digit
+`ualocean.com/community/tutorials/how-to-install-and-configure-kubernetes-on-top-of-a-coreos-cluster
+i
+http://kubernetes.io/v1.1/docs/user-guide/config-best-practices.html
+
+
+
+apiserver:
+--authorization-mode=AlwaysAllow
+
+admission control (recommended)
+--admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota
+
+-address=127.0.0.1 \
+-port=8080 \
+-etcd_servers=http://127.0.0.1:4001 \
+-portal_net=10.100.0.0/16 \
+The portal_net parameter gives the network range that the flannel service will use.
+
+// confirm etc
+ExecStartPost=-/bin/bash -c "until /usr/bin/curl http://127.0.0.1:8080; do echo \"waiting for API server to come online...\"; sleep 3; done"
+Restart=on-failure
+
+
+Shared kubeconfig?
+
+sceduler:
+--address=0.0.0.0 (IP to serve on) (0. for all)
+
+etc, default run inside static pod (find manifest) 
+
+
+controller-mngr:
+ExecStart=/opt/bin/kube-controller-manager \
+-master=http://127.0.0.1:8080 \
+-machines=10.120.0.1,10.120.0.2,10.120.0.3
+
+
+// TODO flannel
+gives its own subnet to docker... 
+http://kubernetes.io/v1.0/docs/getting-started-guides/fedora/flannel_multi_node_cluster.html
+
+modify docker for flannel
+ExecStart=/usr/bin/docker -d -s=btrfs -H fd:// --bip=${FLANNEL_SUBNET} 
+
+
+
+
+Master files:
+apiserver.service
+controller-manager.service
+
+Minion files for all servers:
+scheduler.service
+flannel.service
+docker.service
+proxy.service
+kubelet.service

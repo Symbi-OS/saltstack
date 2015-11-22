@@ -1,0 +1,21 @@
+{
+"apiVersion": "v1",
+"kind": "Pod",
+"metadata": {"name":"kube-scheduler"},
+"spec":{
+  "hostNetwork": true,
+  "containers":[
+    {
+      "name": "scheduler",
+      "image": "gcr.io/google_containers/hyperkube:v1.0.7",
+      "command": [
+              "/hyperkube",
+              "scheduler",
+              "--address=0.0.0.0",
+              "--master=http://127.0.0.1:8080",
+              "--v=2"
+        ]
+    }
+  ]
+ }
+}

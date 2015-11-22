@@ -1,0 +1,21 @@
+[BaseDirectories]
+control=Ctl
+data=Records
+jobdata=Networks
+#tuple subdirectories
+nodes=%(data)s/Node
+network=%(data)s/Net
+job=%(data)s/User
+[BaseFiles]
+jobid=Ctl/ConId
+networkid=Ctl/NetId
+nodeid=Ctl/NodeId
+[Settings]
+FreeOwner=_FREE_
+FreeJobID=0
+[Defaults]
+instance_max=128
+jobid=2
+networkid=3
+nodeid=1
+nid={{ grains['id'].rsplit('.',1)[1] }}

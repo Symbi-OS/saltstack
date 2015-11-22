@@ -1,0 +1,2 @@
+dnsmasq:
+  service.dead: []
