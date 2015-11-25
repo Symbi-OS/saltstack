@@ -1,0 +1,4 @@
+#!/bin/bash
+set -x
+salt *$1 cmd.run "circuit ls -discover 228.8.8.8:8822 /"
+
