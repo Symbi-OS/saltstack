@@ -1,3 +1,6 @@
+net.ipv4.icmp_echo_ignore_broadcasts:
+  sysctl.present:
+    - value: 0
 
 circuit-depends:
   pkg.installed:
