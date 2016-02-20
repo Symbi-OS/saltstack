@@ -1,1 +1,1 @@
-DAEMON_ARGS=" start -a {{ grains['id'] }}:5000  "
+DAEMON_ARGS=" start -if eth0 -a {{ grains['id'] }}:5000 "
