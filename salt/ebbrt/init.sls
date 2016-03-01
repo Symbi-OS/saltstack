@@ -4,6 +4,7 @@ ebbrt-build-depends:
     - pkgs:
        - automake
        - build-essential
+       - git
        - libtool 
        - libfdt-dev
        - cmake 

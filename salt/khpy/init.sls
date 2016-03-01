@@ -11,9 +11,12 @@ khpy-depends:
 
 git-clone-khpy:
   git.latest:
-    - name: http://github.com/SESA/khpy.git
+    - name: https://github.com/SESA/khpy.git
     - target: /opt/khpy
     - user: root
+
+dnsmasq:
+  service.dead: []
 
 /opt/khpy/khs.cfg:
   file.managed:
@@ -45,19 +48,12 @@ git-clone-khpy:
   - requires:
     - git-clone-khpy
 
-khs-install:
-  - cmd.run:
-    - cwd: /opt/khpy
-    - name: ./khs install
-    - unless: test -d /opt/khdb
-    - require:
-      - pkg: git-clone-khpy
-
-khs-start:
-  - cmd.run:
-    - cwd: /opt/khpy
-    - name: ./khs start & 
-    - unless: test ! -d /opt/khdb
-    - require:
-      - pkg: git-clone-khpy
-      - pkg: khs-install 
+/opt/khpy/modules/qemu_client.cfg:
+  file.managed:
+  - source: salt://khpy/local_client_qemu_config
+  - template: jinja
+  - user: root
+  - group: root
+  - mode: 644
+  - requires:
+    - git-clone-khpy
