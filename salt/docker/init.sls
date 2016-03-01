@@ -25,7 +25,7 @@ docker_repo:
    - keyserver: hkp://pgp.mit.edu:80 
    - keyid: 58118E89F3A912897C070ADBF76221572C52609D
    - refresh_db: true
-   - requires:
+   - require:
       - apt-transport-https
 
 docker-install:
@@ -33,7 +33,7 @@ docker-install:
     - fromrepo: ubuntu-trusty
     - name: docker-engine
     - refresh: true
-    - requires:
+    - require:
       - docker_repo
       - pkg: apparmor
       - pkg: bridge-utils

@@ -43,7 +43,7 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
+  - require:
     - git-clone-khpy
 
 /opt/khpy/khdb.cfg:
@@ -53,7 +53,7 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
+  - require:
     - git-clone-khpy
 
 /opt/khpy/modules/qemu_server.cfg:
@@ -63,7 +63,7 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
+  - require:
     - git-clone-khpy
 
 /opt/khpy/modules/qemu_client.cfg:
@@ -73,5 +73,5 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
+  - require:
     - git-clone-khpy

@@ -11,11 +11,11 @@
 
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
-PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/opt/khpy
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/opt/khpy:/usr/local/bin
 DESC="khpy - allocation service"
 NAME=khpy
 DAEMON=/opt/khpy/khs
-DAEMON_ARGS=" reinstall"
+DAEMON_ARGS=" restart"
 DAEMON_LOG_FILE=/var/log/$NAME.log
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME

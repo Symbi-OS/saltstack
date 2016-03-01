@@ -1,22 +1,5 @@
-khpy-depends:
-  pkg.installed:
-    - pkgs: 
-      - git 
-      - python-git
-      - dnsmasq 
-      - bridge-utils 
-      - tcl
-      - tk 
-      - xterm 
-
-git-clone-khpy:
-  git.latest:
-    - name: https://github.com/SESA/khpy.git
-    - target: /opt/khpy
-    - user: root
-
-dnsmasq:
-  service.dead: []
+include:
+  - khpy.install 
 
 /opt/khpy/khs.cfg:
   file.managed:
@@ -25,8 +8,8 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
-    - git-clone-khpy
+  - require:
+    - sls: khpy.install 
 
 /opt/khpy/khdb.cfg:
   file.managed:
@@ -35,8 +18,8 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
-    - git-clone-khpy
+  - require:
+    - sls: khpy.install 
 
 /opt/khpy/modules/qemu_server.cfg:
   file.managed:
@@ -45,8 +28,8 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
-    - git-clone-khpy
+  - require:
+    - sls: khpy.install 
 
 /opt/khpy/modules/qemu_client.cfg:
   file.managed:
@@ -55,5 +38,5 @@ dnsmasq:
   - user: root
   - group: root
   - mode: 644
-  - requires:
-    - git-clone-khpy
+  - require:
+    - sls: khpy.install 
