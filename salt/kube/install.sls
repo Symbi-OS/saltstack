@@ -1,6 +1,3 @@
-include:
-  - kube/common
-
 {% if grains['id'] == pillar['kube-master'] %}
 /etc/kubernetes/manifests/kube-system-base.yaml:
   file.managed:
@@ -9,9 +6,22 @@ include:
     - user: root
     - group: root
     - mode: 755
-    - require:
-      - sls: kube/common
+    - makedirs: true
 {% endif %}
+
+/etc/hosts:
+  file.append:
+    - text: 
+      - {{ salt['pillar.get']('kube-master', '127.0.0.1') }}     kube-master 
+
+/etc/kubernetes/manifests/kube-proxy.yaml:
+  file.managed:
+    - source: salt://kube/manifests/kube-proxy.yaml
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: true
 
 /usr/local/bin/kubectl:
   file.managed:
@@ -53,9 +63,3 @@ include:
     - group: root
     - mode: 755
     - makedirs: true
-
-    - require:
-      - file: /usr/local/bin/kubelet
-      - file: /var/lib/kubelet/kubeconfig
-      - file: /etc/default/kubelet
-      - file: /etc/init.d/kubelet

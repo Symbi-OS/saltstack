@@ -1,3 +1,7 @@
+include:
+  - kube/docker/bridge
+  - docker/install
+
 kube-docker-config-update:
   file.managed:
     - name: /etc/default/docker 
@@ -8,4 +12,6 @@ kube-docker-config-update:
     - group: root
     - mode: 755
     - makedirs: true
-
+    - require:
+        - sls: kube/docker/bridge
+        - sls: docker/install 
