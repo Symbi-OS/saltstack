@@ -17,7 +17,7 @@ net.ipv4.ip_forward:
   sysctl.present:
     - value: 1
 
-docker_repo:
+/etc/apt/sources.list.d/docker.list:
   pkgrepo.managed:
    - name: deb https://apt.dockerproject.org/repo ubuntu-trusty main
    - dist: ubuntu-trusty
@@ -26,15 +26,16 @@ docker_repo:
    - keyid: 58118E89F3A912897C070ADBF76221572C52609D
    - refresh_db: true
    - require:
-      - apt-transport-https
+      - pkg: apt-transport-https
+   - require-in:
+      - pkg: docker-engine
 
-docker-install:
+docker-engine:
   pkg.installed:
     - fromrepo: ubuntu-trusty
     - name: docker-engine
     - refresh: true
     - require:
-      - docker_repo
       - pkg: apparmor
       - pkg: bridge-utils
 
