@@ -7,3 +7,4 @@ kube-start-docker:
     - reload: True
     - require:
       - sls: kube/docker/install 
+      - file: /etc/default/docker 

@@ -39,11 +39,10 @@ docker-engine:
       - pkg: apparmor
       - pkg: bridge-utils
 
-/etc/default/docker:
-  file.managed:
-    - source: salt://docker/default
-    - template: jinja
-    - user: root
-    - group: root
-    - mode: 644
-    - makedirs: true
+kill-docker:
+  service.dead:
+    - name: docker
+    - require:
+      - pkg: docker-engine
+  
+
