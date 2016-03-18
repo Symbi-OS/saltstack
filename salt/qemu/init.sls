@@ -32,6 +32,7 @@ extract-qemu-tarball:
       
 install-qemu:
   cmd.run:
+#--prefix=/usr/local --target-list=x86_64-softmmu --enable-vhost-net --enable-kvm --disable-linux-user --disable-vnc --disable-bluez --disable-brlapi --disable-curl --disable-curses --disable-fdt --without-system-pixman --disable-sdl --disable-uuid --disable-vnc --disable-xen --disable-linux-aio --disable-cap-ng --disable-xfsctl --disable-rdma --disable-spice --disable-rbd --disable-libusb --disable-glx --disable-zlib-test --disable-lzo --disable-snappy --disable-guest-agent --disable-tools --disable-libiscsi --disable-libnfs --disable-seccomp --disable-glusterfs --disable-archipelago --disable-gtk --disable-vte --disable-tpm --disable-libssh2 --disable-vhdx --disable-quorum --enable-numa --disable-qom-cast-debug --disable-guest-base --disable-pie --disable-attr
     - name: |
         ./configure --target-list=x86_64-softmmu --enable-vhost-net --enable-kvm || exit -1
         make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
