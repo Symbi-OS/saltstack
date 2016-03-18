@@ -25,8 +25,8 @@ install-libtool:
 extract-qemu-tarball:
   archive.extracted:
     - name: /tmp/qemu
-    - source: http://wiki.qemu-project.org/download/qemu-2.4.0.tar.bz2
-    - source_hash: md5=186ee8194140a484a455f8e3c74589f4
+    - source: http://wiki.qemu-project.org/download/qemu-2.5.0.tar.bz2
+    - source_hash: md5=f469f2330bbe76e3e39db10e9ac4f8db
     - archive_format: tar
     - tar_options: j
       
