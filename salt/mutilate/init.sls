@@ -1,26 +1,13 @@
-install-git:
+mutilate-build-depends:
   pkg.installed:
-    - name: python-git
-
-install-scons:
-  pkg.installed:
-    - name: scons
-
-install-libevent-dev:
-  pkg.installed:
-    - name: libevent-dev
-
-install-gengetopt:
-  pkg.installed:
-    - name: gengetopt
-
-install-libzmq-dev:
-  pkg.installed:
-    - name: libzmq-dev      
-
-install-build-essential:
-  pkg.installed:
-    - name: build-essential
+    - refresh: true
+    - pkgs:
+      - python-git
+      - scons
+      - libevent-dev
+      - gengetopt
+      - libzmq-dev
+      - build-essential
 
 https://github.com/leverich/mutilate.git:
   git.latest:
@@ -34,10 +21,7 @@ mutilate_installed:
     - name: |
         scons || exit -1
         cp /tmp/mutilate/mutilate /usr/local/bin
+    - unless: test -x /usr/local/bin/mutilate
     - require:
-        - pkg: install-git
-        - pkg: install-scons
-        - pkg: install-libevent-dev
-        - pkg: install-gengetopt
-        - pkg: install-libzmq-dev
-        - pkg: install-build-essential
+      - pkg: mutilate-build-depends
+      - git: https://github.com/leverich/mutilate.git
