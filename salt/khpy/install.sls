@@ -1,6 +1,3 @@
-include:
-  - misc.git
-
 packages:
   pkg.installed:
     - refesh: true
@@ -14,4 +11,4 @@ git-clone-khpy:
     - target: /opt/khpy
     - user: root
     - require:
-      - sls: misc.git
+      - pkg: packages 

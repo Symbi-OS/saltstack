@@ -1,26 +1,19 @@
-install-git:
+memcached-build-depends:
   pkg.installed:
-    - name: python-git
-      
-install-automake:
-  pkg.installed:
-    - name: automake
-
-install-build-essential:
-  pkg.installed:
-    - name: build-essential
-
-install-libevent-dev:
-  pkg.installed:
-    - name: libevent-dev
-
+    - refresh: true
+    - pkgs:
+       - automake
+       - build-essential
+       - python-git
+       - libevent-dev
+    
 https://github.com/sesa/memcached.git:
   git.latest:
     - rev: pin_threads
     - target: /tmp/memcached
     - user: root
     - require:
-        - pkg: python-git 
+        - pkg: memcached-build-depends
 
 memcached_installed:
   cmd.run:
@@ -33,7 +26,5 @@ memcached_installed:
     - timeout: 300
     - unless: test -x /usr/local/bin/memcached
     - require:
-        - pkg: install-automake
-        - pkg: install-build-essential
-        - pkg: install-git
-        - pkg: install-libevent-dev
+        - pkg: memcached-build-depends
+        - git: install-libevent-dev
