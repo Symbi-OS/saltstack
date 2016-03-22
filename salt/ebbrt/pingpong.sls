@@ -1,3 +1,6 @@
+include:
+  - ebbrt
+
 https://github.com/dschatzberg/EbbRT-PingPong.git:
   git.latest:
     - target: /tmp/ebbrt-pingpong
@@ -12,3 +15,6 @@ ebbrt-pingpong-built:
       - EBBRT_SRCDIR: '/tmp/ebbrt'
     - timeout: 300
     - unless: test -x /tmp/ebbrt-pingpong/hosted/build/Release/pingpong
+    - require:  
+      - git: https://github.com/dschatzberg/EbbRT-PingPong.git
+      - sls: ebbrt 

@@ -37,7 +37,7 @@ install-qemu:
         ./configure --target-list=x86_64-softmmu --enable-vhost-net --enable-kvm || exit -1
         make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
         make install
-    - cwd: /tmp/qemu/qemu-2.4.0
+    - cwd: /tmp/qemu/qemu-2.5.0
     - timeout: 300
     - unless: test -x /usr/local/bin/qemu-system-x86_64
     - require:

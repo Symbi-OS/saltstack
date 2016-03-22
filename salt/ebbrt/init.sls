@@ -43,3 +43,13 @@ https://github.com/sesa/ebbrt.git:
     - submodules: true
     - require:
         - pkg: ebbrt-build-depends 
+
+ebbrt-toolchain-fetched:
+  cmd.run:
+    - cwd: /tmp/ebbrt/baremetal/ext/EbbRT-toolchain
+    - name: |
+        make || exit -1
+    - timeout: 300
+    - unless: test -x /tmp/ebbrt/baremetal/ext/EbbRT-toolchain/install/bin/x86_64-pc-ebbrt-g++
+    - require:
+        - git: https://github.com/sesa/ebbrt.git
