@@ -1,0 +1,19 @@
+These scripts will install, setup and run a memcached-mutilate experiment on a set
+of nodes. 
+
+Requirements: 
+  
+  You must set the appropriate roles to each nodes: 
+    server: memcached server    
+    master: mutilate master
+    minion: mutilate minion
+  
+    > salt "*" grains.setval roles "minion"
+
+  
+  Trigger a mine update on all nodes:
+    > salt '*' mine.flush
+    > salt '*' mine.update
+
+
+You must trigger a 'mine update' between running "setup" and "begin"

@@ -1,3 +1,6 @@
+include:
+  - qemu
+
 ebbrt-build-depends:
   pkg.installed:
     - refresh: true

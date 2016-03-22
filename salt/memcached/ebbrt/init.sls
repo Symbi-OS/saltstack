@@ -1,5 +1,6 @@
 include:
   - ebbrt
+  - qemu.tap
 
 https://github.com/sesa/ebbrt-memcached.git:
   git.latest:
@@ -18,4 +19,3 @@ ebbrt-memcached-built:
     - require:
         - sls: ebbrt
         - git: https://github.com/sesa/ebbrt-memcached.git
-          

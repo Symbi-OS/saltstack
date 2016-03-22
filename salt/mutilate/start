@@ -1,0 +1,23 @@
+#!/bin/bash
+# Starts local mutilate process
+
+MUTILATE=/tmp/mutilate/mutilate
+{% set role = salt['grains.get']('roles', '') %}
+{% set cores = salt['grains.get']('num_cpus', '1') %}
+{% if role == 'master' %}
+ {% for mcd_server, mcd_ip in salt['mine.get']('roles:memcached', 'mcd_server', expr_form='grain').items() %}
+      # mutilate master 
+      {% set coresm1 = cores - 1 %}
+      taskset -c 1-{{ coresm1 }} $MUTILATE -A --affinity -T {{ coresm1 }} &
+      taskset -c 0 $MUTILATE --binary -s {{ mcd_ip }} --loadonly
+      taskset -c 0 $MUTILATE --binary -s {{ mcd_ip }} \
+      {% for minion, addrs in salt['mine.get']('roles:minion', 'network.interfaces', expr_form='grain').items() %} \
+        -a {{ minion }} \
+      {% endfor %} \
+      -K fb_key -V fb_value -i fb_ia -u 0.25 -c 8 \
+      -d 4 --noload -B -C 8 -Q 1000 -t 60 --scan=50000:600000:50000 > /tmp/mutilate_out &
+ {% endfor %}
+{% else %}
+  # mutilate agent process
+  $MUTILATE -A --affinity -T {{ cores }} & 
+{% endif %}
