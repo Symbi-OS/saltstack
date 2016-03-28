@@ -14,7 +14,7 @@ nodeid=Ctl/NodeId
 FreeOwner=_FREE_
 FreeJobID=0
 [Defaults]
-instance_max=128
+instance_max=10
 jobid=2
 networkid=3
 nodeid=1
