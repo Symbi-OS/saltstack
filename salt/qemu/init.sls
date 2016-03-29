@@ -32,6 +32,14 @@ https://github.com/SESA/qemu.git:
     - user: root
     - require:
         - pkg: git
+
+pixman:
+  cmd.run:
+    - name: |
+        git submodule update --init pixman || exit -1
+    - cwd: /tmp/qemu
+    - require:
+      - git: https://github.com/SESA/qemu.git
       
 install-qemu:
   cmd.run:
@@ -40,14 +48,14 @@ install-qemu:
         ./configure --target-list=x86_64-softmmu --enable-vhost-net --enable-kvm || exit -1
         make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
         make install
-    - cwd: /tmp/qemu/qemu-2.5.0
+    - cwd: /tmp/qemu
     - timeout: 300
     - unless: test -x /usr/local/bin/qemu-system-x86_64
     - require:
-        - pkg: install-build-essential
-        - pkg: install-pkg-config
-        - pkg: install-zlib1g-dev
-        - pkg: install-libglib2.0-dev
-        - pkg: install-autoconf
-        - pkg: install-libtool
-        - git: https://github.com/sesa/qemu.git
+      - git: https://github.com/SESA/qemu.git
+      - pkg: install-build-essential
+      - pkg: install-pkg-config
+      - pkg: install-zlib1g-dev
+      - pkg: install-libglib2.0-dev
+      - pkg: install-autoconf
+      - pkg: install-libtool
