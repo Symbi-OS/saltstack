@@ -11,10 +11,29 @@ ebbrt-build-depends:
        - libtool 
        - libfdt-dev
        - cmake 
-       - libboost-dev 
+       - libboost-dev
        - libboost-filesystem-dev 
        - libboost-coroutine-dev 
        - libtbb-dev
+
+g++5repo:
+  cmd.run: 
+    - name: add-apt-repository ppa:ubuntu-toolchain-r/test
+
+g++-5:
+  pkg.installed:
+    - name: g++-5
+    - refresh: true
+    - require:
+        - cmd: add-apt-repository ppa:ubuntu-toolchain-r/test
+
+g++-5_link:
+  cmd.run:
+    - name: ln -f -s /usr/bin/g++-5 /usr/bin/g++
+    - require:
+        - pkg: ebbrt-build-depends 
+        - pkg: g++-5 
+
 
 extract-capnproto-tarball:
   archive.extracted:
