@@ -22,13 +22,16 @@ install-libtool:
   pkg.installed:
     - name: libtool
 
-extract-qemu-tarball:
-  archive.extracted:
-    - name: /tmp/qemu
-    - source: http://wiki.qemu-project.org/download/qemu-2.5.0.tar.bz2
-    - source_hash: md5=f469f2330bbe76e3e39db10e9ac4f8db
-    - archive_format: tar
-    - tar_options: j
+git:
+  pkg.installed: []
+
+https://github.com/SESA/qemu.git:
+  git.latest:
+    - rev: 'pin-threads'
+    - target: /tmp/qemu
+    - user: root
+    - require:
+        - pkg: git
       
 install-qemu:
   cmd.run:
@@ -47,4 +50,4 @@ install-qemu:
         - pkg: install-libglib2.0-dev
         - pkg: install-autoconf
         - pkg: install-libtool
-        - archive: extract-qemu-tarball  
+        - git: https://github.com/sesa/qemu.git
