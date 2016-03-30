@@ -1,4 +1,4 @@
-base:
+include:
   - performance.disable_cstates
   - performance.disable_boost
   - performance.disable_ht
