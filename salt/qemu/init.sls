@@ -59,3 +59,4 @@ install-qemu:
       - pkg: install-libglib2.0-dev
       - pkg: install-autoconf
       - pkg: install-libtool
+      - cmd: pixman
