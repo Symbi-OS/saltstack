@@ -1,5 +1,6 @@
 include:
   - qemu
+  - ebbrt.env
 
 ebbrt-build-depends:
   pkg.installed:
