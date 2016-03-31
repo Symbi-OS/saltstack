@@ -29,4 +29,4 @@ default_numa=2
 cmd=qemu-system-x86_64 -cpu host -enable-kvm 
 #perf settings
 perflog_path=/tmp/perflog
-perf_cmd=perfkvm --guest stat
+perf_cmd=perf kvm
