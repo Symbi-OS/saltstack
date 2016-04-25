@@ -50,7 +50,7 @@ install-capnproto:
     - cwd: /tmp/capnproto/capnproto-0.4.0/c++
     - name: |
         autoreconf -i || exit -1
-        ./configure || exit -1
+        CXXFLAGS="-O2 -DNDEBUG -fpermissive" ./configure || exit -1
         make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
         make install
     - timeout: 300

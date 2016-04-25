@@ -1,6 +1,6 @@
-/tmp/start_ebbrt_memcached:
+/tmp/start_ebbrt_memcached.sh:
   file.managed:
-  - source: salt://memcached/ebbrt/start
+  - source: salt://memcached/ebbrt/start.sh
   - template: jinja
   - user: root
   - group: root
@@ -8,8 +8,8 @@
 
 start_ebbrt_memcached:
   cmd.run:
-    - name: /tmp/start_ebbrt_memcached
+    - name: /tmp/start_ebbrt_memcached.sh
     - cwd: /tmp
     - timeout: 300
     - requires:
-      - file: /tmp/start_ebbrt_memcached
+      - file: /tmp/start_ebbrt_memcached.sh
