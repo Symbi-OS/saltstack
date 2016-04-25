@@ -70,9 +70,13 @@ case "$AFF" in
 esac
 
 # append the interfaces listed to the string with spaces
-while [ "$#" -ne "0" ] ; do
-	IFACES+=" $1"
-	shift
+for d in /sys/bus/pci/drivers/ixgbe/* ; do
+    regx='^[0-9]+:[0-9]+:[0-9]+.[0-9]+$'
+    if [[ $(basename "$d") =~ $regx ]]; then
+        for nic in "$d/net/*" ; do
+            IFACES+=" $(basename $nic)"
+        done
+    fi
 done
 
 # for now the user must specify interfaces
