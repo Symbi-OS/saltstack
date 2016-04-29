@@ -2,6 +2,14 @@ include:
   - ebbrt
   - qemu.tap
 
+/tmp/mcd_server_ip.sh:
+  file.managed:
+  - source: salt://memcached/ebbrt/server_ip.sh
+  - template: jinja
+  - user: root
+  - group: root
+  - mode: 755
+
 https://github.com/sesa/ebbrt-memcached.git:
   git.latest:
     - target: /tmp/ebbrt-memcached
@@ -19,3 +27,4 @@ ebbrt-memcached-built:
     - require:
         - sls: ebbrt
         - git: https://github.com/sesa/ebbrt-memcached.git
+

@@ -2,6 +2,9 @@ include:
   - qemu
   - qemu.bridge
 
+psmisc:
+  pkg.installed: [] 
+
 /tmp/spawn_virtual_minion.sh:
   file.managed:
   - source: salt://misc/spawn_virtual_minion.sh

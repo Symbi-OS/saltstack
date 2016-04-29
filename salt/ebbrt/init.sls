@@ -5,6 +5,7 @@ include:
 ebbrt-build-depends:
   pkg.installed:
     - refresh: true
+    - timeout: 300
     - pkgs:
        - automake
        - build-essential

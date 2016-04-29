@@ -8,6 +8,6 @@
 
 start:
   cmd.run:
-  - name: /tmp/start
+  - name: /tmp/start &
   - requires:
     - file: /tmp/start

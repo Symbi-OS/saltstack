@@ -6,7 +6,7 @@ memcached-build-depends:
        - build-essential
        - python-git
        - libevent-dev
-    
+
 https://github.com/sesa/memcached.git:
   git.latest:
     - rev: pin_threads
@@ -28,3 +28,11 @@ memcached_installed:
     - require:
         - pkg: memcached-build-depends
         - git: https://github.com/sesa/memcached.git
+
+/tmp/mcd_server_ip.sh:
+  file.managed:
+  - source: salt://memcached/linux/server_ip.sh
+  - template: jinja
+  - user: root
+  - group: root
+  - mode: 755
