@@ -23,7 +23,8 @@ MUTILATE=/tmp/mutilate/mutilate
       {% if cores > 1 %}
         {% set core = cores - 1 %}
       {% endif %}
-      taskset -c 1-{{ core }} $MUTILATE -A --affinity -T {{ core }} > /dev/null 2>&1 &
+      taskset -c 1-{{ core }} $MUTILATE -A --affinity -T {{ core }} > \
+        stdout.agent.log 2>&1 &
       taskset -c 0 $MUTILATE --binary -s {{ mcd_ip[0][1] }} --loadonly \
         -K {{ K_val }} -V {{ V_val }}
       taskset -c 0 $MUTILATE --binary --noload -B -s {{ mcd_ip[0][1] }} \
@@ -33,8 +34,9 @@ MUTILATE=/tmp/mutilate/mutilate
       {% endfor %} \
       -K {{ K_val }} -V {{ V_val }} -i {{ i_val }} -u {{ u_val }} \
       -c {{ c_val }} -d {{ d_val }} -C {{ C_val }} -Q {{ Q_val }} \
-      -t {{ t_val }} --scan={{ scan_val }} > /tmp/mutilate_out 2>&1
+      -t {{ t_val }} --scan={{ scan_val }} > >(tee stdout.mutilate.log) \
+      2> >(tee stderr.mutilate.log >&2)
 # mutilate agents
 {% else %}
-  $MUTILATE -A --affinity -T {{ cores }} > /dev/null 2>&1 &
+  $MUTILATE -A --affinity -T {{ cores }} > stdout.agent.log 2>&1 &
 {% endif %}

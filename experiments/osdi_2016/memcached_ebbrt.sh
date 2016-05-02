@@ -8,12 +8,16 @@ MIN=$ROOT:minion
 MUT="G@$MAS or G@$MIN"
 TEST=
 
-echo "Warning: this assumes that the role grains have already been set on each node."
+date
 
 # Sync all salt state
 salt -G $ALL saltutil.refresh_pillar 
 salt -G $ALL saltutil.sync_grains 
 /srv/scripts/clear_mine.sh
+
+# Print state
+salt "*" grains.get $ROOT 
+salt "*" grains.get virtual 
 
 # Apply performance optimisations
 salt -G $ALL state.sls $TEST performance 
@@ -31,6 +35,6 @@ salt -G $ALL mine.update
 sleep 10
 salt -G $MIN state.apply $TEST mutilate.start &
 sleep 30
-salt -G $MAS state.apply $TEST mutilate.start -t 600
+salt -G $MAS state.apply $TEST mutilate.start -t 5400
 
 exit 0

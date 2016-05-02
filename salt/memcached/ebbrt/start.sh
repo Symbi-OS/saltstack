@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # random ints between 00-FF
 OCT1=$(openssl rand -hex 1) 
 OCT2=$(openssl rand -hex 1) 

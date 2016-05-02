@@ -8,12 +8,16 @@ MIN=$ROOT:minion
 MUT="G@$MAS or G@$MIN"
 TAIL="-t 600"
 
-echo "Warning: this assumes that the role grains have already been set on each node."
+date
 
 # Sync all salt state
 salt -G $ALL saltutil.refresh_pillar 
 salt -G $ALL saltutil.sync_grains 
 /srv/scripts/clear_mine.sh
+
+# Print state
+salt "*" grains.get $ROOT 
+salt "*" grains.get virtual 
 
 # Apply performance optimisations
 salt -G $ALL state.sls $TEST performance 

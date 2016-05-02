@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 IP=$(/tmp/mcd_server_ip.sh)
 
