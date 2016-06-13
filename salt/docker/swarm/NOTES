@@ -1,0 +1,14 @@
+ip link add link {ETH} vhub type vlan proto 802.1Q id 1054
+ip link set vhub up
+curl -sSL https://experimental.docker.com/ | sh
+service docker stop
+docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+
+DISCOVERY BACKEND
+docker run -d -p 8500:8500 --name=consul progrium/consul -server
+
+SWARM MASTER:
+docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise <mmaster_ip>:4000 consul://<consul_ip>:8500
+
+MINIONS
+docker run -d swarm join --advertise=<minion_ip>:2375 consul://<consul_ip>:8500

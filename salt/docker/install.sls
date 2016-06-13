@@ -19,8 +19,8 @@ net.ipv4.ip_forward:
 
 /etc/apt/sources.list.d/docker.list:
   pkgrepo.managed:
-   - name: deb https://apt.dockerproject.org/repo ubuntu-trusty main
-   - dist: ubuntu-trusty
+   - name: deb https://apt.dockerproject.org/repo ubuntu-xenial experimental 
+   - dist: ubuntu-xenial
    - file: /etc/apt/sources.list.d/docker.list
    - keyserver: hkp://pgp.mit.edu:80 
    - keyid: 58118E89F3A912897C070ADBF76221572C52609D
@@ -32,7 +32,7 @@ net.ipv4.ip_forward:
 
 docker-engine:
   pkg.installed:
-    - fromrepo: ubuntu-trusty
+    - fromrepo: ubuntu-xenial
     - name: docker-engine
     - refresh: true
     - require:
@@ -45,4 +45,3 @@ kill-docker:
     - require:
       - pkg: docker-engine
   
-
