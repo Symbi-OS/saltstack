@@ -3,7 +3,7 @@
 set -x
 
 MUTILATE=/tmp/mutilate/mutilate
-{% set role  = salt['grains.get']('custom:memcached:role', 'minion') %}
+{% set role  = salt['grains.get']('role', 'minion') %}
 {% set cores = salt['grains.get']('num_cpus', '1') %}
 
 # mutilate master 
@@ -18,7 +18,7 @@ MUTILATE=/tmp/mutilate/mutilate
 {% set Q_val = salt['pillar.get']('mutilate:Q_val','1000')%}
 {% set t_val = salt['pillar.get']('mutilate:t_val','30')%}
 {% set scan_val = salt['pillar.get']('mutilate:scan_val','50000:600000:50000')%}
-{% set mcd_ip = salt['mine.get']('custom:memcached:role:server', 'mcd_server_ip', expr_form='grain').items() %}
+{% set mcd_ip = salt['mine.get']('role:server', 'mcd_server_ip', expr_form='grain').items() %}
       # set pinning ranges
       {% if cores > 1 %}
         {% set core = cores - 1 %}
@@ -29,7 +29,7 @@ MUTILATE=/tmp/mutilate/mutilate
         -K {{ K_val }} -V {{ V_val }}
       taskset -c 0 $MUTILATE --binary --noload -B -s {{ mcd_ip[0][1] }} \
         -a localhost \
-      {% for minion, addrs in salt['mine.get']('custom:memcached:role:minion', 'network.interfaces', expr_form='grain').items() %} \
+      {% for minion, addrs in salt['mine.get']('role:minion', 'network.interfaces', expr_form='grain').items() %} \
         -a {{ minion }} \
       {% endfor %} \
       -K {{ K_val }} -V {{ V_val }} -i {{ i_val }} -u {{ u_val }} \

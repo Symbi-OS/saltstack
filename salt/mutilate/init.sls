@@ -8,11 +8,14 @@ mutilate-build-depends:
       - gengetopt
       - libzmq-dev
       - build-essential
+      - git
 
 https://github.com/leverich/mutilate.git:
   git.latest:
     - target: /tmp/mutilate
     - user: root
+    - require:
+      - pkg: mutilate-build-depends
 
 mutilate_installed:
   cmd.run:

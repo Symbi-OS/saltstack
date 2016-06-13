@@ -20,7 +20,7 @@ ip link set $TAP up | exit -1
 
 taskset -c {{ core_pin }} qemu-system-x86_64 \
 -cpu host -enable-kvm -daemonize -boot n \
--m 4G -smp cpus={{ cpus }} \
+-m {{ ram_qb }}G -smp cpus={{ cpus }} \
 --netdev \
 tap,id=vlan1,ifname=$TAP,script=no,downscript=no,vhost=on,queues={{ mq_queues }} \
 --device virtio-net-pci,mq=on,vectors={{ mq_vectors }},\
