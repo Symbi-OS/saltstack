@@ -1,1 +1,1 @@
-while [ True ]; do clear; salt '*' test.ping; sleep 5; done
+while [ True ]; do clear; salt '*' grains.get virtual; sleep 5; done
