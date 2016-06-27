@@ -19,7 +19,7 @@ net.ipv4.ip_forward:
 
 /etc/apt/sources.list.d/docker.list:
   pkgrepo.managed:
-   - name: deb https://apt.dockerproject.org/repo ubuntu-xenial experimental 
+   - name: deb https://apt.dockerproject.org/repo ubuntu-xenial main
    - dist: ubuntu-xenial
    - file: /etc/apt/sources.list.d/docker.list
    - keyserver: hkp://pgp.mit.edu:80 
@@ -38,10 +38,3 @@ docker-engine:
     - require:
       - pkg: apparmor
       - pkg: bridge-utils
-
-kill-docker:
-  service.dead:
-    - name: docker
-    - require:
-      - pkg: docker-engine
-  
