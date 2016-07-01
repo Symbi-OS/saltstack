@@ -1,4 +1,5 @@
 include:
+  - docker
   - qemu
   - ebbrt.env
 
@@ -17,25 +18,6 @@ ebbrt-build-depends:
        - libboost-filesystem-dev 
        - libboost-coroutine-dev 
        - libtbb-dev
-
-g++5repo:
-  cmd.run: 
-    - name: add-apt-repository ppa:ubuntu-toolchain-r/test
-
-g++-5:
-  pkg.installed:
-    - name: g++-5
-    - refresh: true
-    - require:
-        - cmd: add-apt-repository ppa:ubuntu-toolchain-r/test
-
-g++-5_link:
-  cmd.run:
-    - name: ln -f -s /usr/bin/g++-5 /usr/bin/g++
-    - require:
-        - pkg: ebbrt-build-depends 
-        - pkg: g++-5 
-
 
 extract-capnproto-tarball:
   archive.extracted:
@@ -60,9 +42,8 @@ install-capnproto:
         - archive: extract-capnproto-tarball
         - pkg: ebbrt-build-depends 
         
-https://github.com/jmcadden/ebbrt.git:
+https://github.com/sesa/ebbrt.git:
   git.latest:
-    - rev: 'wa'
     - target: /tmp/ebbrt
     - user: root
     - submodules: true
