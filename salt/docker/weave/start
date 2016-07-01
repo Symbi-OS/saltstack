@@ -15,11 +15,12 @@ set -x
   -H :{{ s_port }} --replication \
   --advertise {{salt['grains.get']('id')}}:{{ s_port }} \
   consul://{{salt['grains.get']('id')}}:{{ kv_port }}
-{% endif %}
 
+{% else %}
   sleep 30;
   docker run -d swarm join \
   --advertise={{salt['grains.get']('id')}}:{{ d_port }} \
 {% for manager, addrs in salt['mine.get']('role:manager', 'network.interfaces', expr_form='grain').items() %} \
   consul://{{ manager }}:{{ kv_port }} \
 {% endfor %} 
+{% endif %}

@@ -14,13 +14,10 @@ include:
 systemctl daemon-reload:
   cmd.run: []
 
-docker-service:
-  service.running:
-    - name: docker
-    - enable: true
-    - reload: true
+start_docker:
+  cmd.run:
+    - name: systemctl restart docker
     - require:
       - sls: docker.install
       - cmd: systemctl daemon-reload
-    - watch:
       - file: /etc/systemd/system/docker.service
