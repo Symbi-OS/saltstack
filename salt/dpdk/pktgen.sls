@@ -4,6 +4,7 @@ pktgen-depends:
     - timeout: 300
     - pkgs:
        - libpcap-dev
+       - lua5.2 
 
 extract-pktgen:
   archive.extracted:
