@@ -44,6 +44,7 @@ install-capnproto:
         
 https://github.com/sesa/ebbrt.git:
   git.latest:
+    - rev: 77384cc41d916f445a33df5a92871872c74dcc20
     - target: /tmp/ebbrt
     - user: root
     - submodules: true
@@ -58,4 +59,4 @@ ebbrt-toolchain-fetched:
     - timeout: 300
     - unless: test -x /tmp/ebbrt/baremetal/ext/EbbRT-toolchain/install/bin/x86_64-pc-ebbrt-g++
     - require:
-        - git: https://github.com/jmcadden/ebbrt.git
+        - git: https://github.com/sesa/ebbrt.git

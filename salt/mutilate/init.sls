@@ -10,7 +10,7 @@ mutilate-build-depends:
       - build-essential
       - git
 
-https://github.com/leverich/mutilate.git:
+https://github.com/jmcadden/mutilate.git:
   git.latest:
     - target: /tmp/mutilate
     - user: root
@@ -27,4 +27,4 @@ mutilate_installed:
     - unless: test -x /usr/local/bin/mutilate
     - require:
       - pkg: mutilate-build-depends
-      - git: https://github.com/leverich/mutilate.git
+      - git: https://github.com/jmcadden/mutilate.git

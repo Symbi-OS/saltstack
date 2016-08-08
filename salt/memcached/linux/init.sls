@@ -4,7 +4,7 @@ memcached-build-depends:
     - pkgs:
        - automake1.11
        - build-essential
-       - python-git
+       - git
        - libevent-dev
 
 https://github.com/sesa/memcached.git:
