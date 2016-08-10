@@ -1,0 +1,2 @@
+DOCKER_OPTS=" -s=devicemapper "
+DOCKER_NOFILE=1000000
