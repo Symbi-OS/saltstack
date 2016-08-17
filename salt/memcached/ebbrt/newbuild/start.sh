@@ -1,30 +1,28 @@
 #!/bin/bash
-
+set -x
 # random ints between 00-FF
 OCT1=$(openssl rand -hex 1)
 OCT2=$(openssl rand -hex 1)
-VMID=$OCT1$OCT2
-TAP=virttap_$VMID
-
-ip tuntap add dev $TAP mode tap || exit -1
-ip link set $TAP master virtbr | exit -1
-ip link set $TAP up | exit -1
 
 {% set cpus                = salt['pillar.get']('memcached:cpus','1')%}
 {% set mq_queues           = salt['pillar.get']('memcached:mq_queues','2')%}
 {% set mq_vectors          = salt['pillar.get']('memcached:mq_vectors','6')%}
 {% set ram_qb              = salt['pillar.get']('memcached:ram_qb','4')%}
-{% set core_pin            = salt['pillar.get']('memcached:core_pin','6')%}
+{% set core_pin            = salt['pillar.get']('memcached:core_pin','4096')%}
 {% set vhost_pin_start     = salt['pillar.get']('memcached:vhost_pin_start','0')%}
 {% set vhost_pin_inc       = salt['pillar.get']('memcached:vhost_pin_inc','1')%}
 
-taskset -c {{ core_pin }} qemu-system-x86_64 \
--cpu host -enable-kvm -daemonize -boot n \
--m {{ ram_qb }}G -smp cpus={{ cpus }} \
+( taskset -c {{ core_pin }} qemu-system-x86_64 \
+-cpu host -enable-kvm -serial stdio -display none \
+-m 4G -smp cpus={{ cpus }} \
 --netdev \
-tap,id=vlan1,ifname=$TAP,script=no,downscript=no,vhost=on \
---device virtio-net-pci,\
-netdev=vlan1,mac=02:00:00:04:$OCT1:$OCT2 > /dev/null 2>&1 &
+tap,id=vlan1,ifname=virttap,script=no,downscript=no,vhost=on,queues={{ mq_queues }} \
+--device virtio-net-pci,mq=on,vectors={{ mq_vectors }},\
+netdev=vlan1,mac=02:00:00:04:$OCT1:$OCT2 \
+-pidfile /tmp/pid \
+-kernel /tmp/ebbrt-memcached/memcached.elf32 \
+>/tmp/stdout \
+2>/tmp/stderr; date >/tmp/finish; )&
 
 while [ -z "$pids" ]
 do

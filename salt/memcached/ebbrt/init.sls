@@ -12,6 +12,7 @@ include:
 
 https://github.com/sesa/ebbrt-memcached.git:
   git.latest:
+    - rev: 4965b6b9d80001557ad086c1cab17ec3aef8496c 
     - target: /tmp/ebbrt-memcached
     - user: root
 
