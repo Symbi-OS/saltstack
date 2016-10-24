@@ -6,13 +6,20 @@
 import os
 import glob
 
+def set_perf(governor):
+    with open(governor, 'w') as f:
+        f.write('performance')
+        print governor + ' -> performance'
+    return
+
 for cpu in glob.iglob('/sys/devices/system/cpu/cpu[0-9]*'):
-    onlinename = cpu + '/online'
-    if os.path.isfile(onlinename):
-        with open(onlinename, 'r') as f:
-            if int(f.read(1)) == 0:
-                continue
-            governor = cpu + '/cpufreq/scaling_governor'
-            with open(governor, 'w') as f:
-                f.write('performance')
-                print governor + ' -> performance'
+    governor = cpu + '/cpufreq/scaling_governor'
+    if cpu.endswith("/cpu0"):
+        set_perf(governor)
+    else:
+        onlinename = cpu + '/online'
+        if os.path.isfile(onlinename):
+            with open(onlinename, 'r') as f:
+                if int(f.read(1)) == 0:
+                    continue
+                set_perf(governor)

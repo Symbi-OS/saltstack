@@ -4,3 +4,7 @@ include:
   - performance.disable_ht
   - performance.max_freq
   - performance.set_irq_affinity
+
+
+cat /proc/cmdline:
+  cmd.run
