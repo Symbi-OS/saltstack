@@ -28,4 +28,3 @@ ebbrt-memcached-built:
     - require:
         - sls: ebbrt
         - git: https://github.com/sesa/ebbrt-memcached.git
-

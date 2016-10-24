@@ -26,6 +26,7 @@ netdev=vlan1,mac=02:00:00:04:$OCT1:$OCT2 \
 
 while [ -z "$pids" ]
 do
+  sleep 2
   pids=$( pgrep vhost- )
 done
 core={{ vhost_pin_start }}
