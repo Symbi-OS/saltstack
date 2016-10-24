@@ -15,13 +15,16 @@ import subprocess
 OCT1=hex(random.randint(0,255))[2:].zfill(2).upper()
 OCT2=hex(random.randint(0,255))[2:].zfill(2).upper()
 
+stdout = open("/tmp/stdout", "w")
+stderr = open("/tmp/stderr", "w")
 p = subprocess.Popen("taskset -c {{ core_pin }} qemu-system-x86_64 -cpu host " +
                      "-enable-kvm -nographic -m 4G -smp cpus={{ cpus }} " +
                      "--netdev tap,id=vlan1,ifname=virttap,script=no," +
                      "downscript=no,vhost=on,queues={{ mq_queues }} " +
                      "--device virtio-net-pci,mq=on,vectors={{ mq_vectors }}," +
                      "netdev=vlan1,mac=02:00:00:04:" + OCT1 + ":" + OCT2 +
-                     " -kernel /tmp/ebbrt-node/build/bm/node.elf32", shell=True)
+                     " -kernel /tmp/ebbrt-node/build/bm/node.elf32", shell=True,
+                     stdout=stdout, stderr=stderr)
 
 while True:
     try:
@@ -35,5 +38,3 @@ core = {{ vhost_pin_start }}
 for pid in pids:
     subprocess.call(['taskset', '-pc', str(core), str(pid)])
     core += {{vhost_pin_inc}}
-
-p.wait()
