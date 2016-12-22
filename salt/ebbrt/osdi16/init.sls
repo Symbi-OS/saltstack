@@ -1,6 +1,6 @@
 include:
-  - docker
   - qemu
+  - ebbrt.env
 
 ebbrt-build-depends:
   pkg.installed:
@@ -11,12 +11,12 @@ ebbrt-build-depends:
        - build-essential
        - git
        - libtool 
+       - libfdt-dev
        - cmake 
        - libboost-dev
        - libboost-filesystem-dev 
        - libboost-coroutine-dev 
        - libtbb-dev
-       - texinfo
 
 extract-capnproto-tarball:
   archive.extracted:
@@ -43,6 +43,7 @@ install-capnproto:
         
 https://github.com/sesa/ebbrt.git:
   git.latest:
+    - rev: 'osdi_2016'
     - target: /tmp/ebbrt
     - user: root
     - submodules: true
@@ -51,44 +52,10 @@ https://github.com/sesa/ebbrt.git:
 
 ebbrt-toolchain-fetched:
   cmd.run:
-    - cwd: /tmp/ebbrt/toolchain
+    - cwd: /tmp/ebbrt/baremetal/ext/EbbRT-toolchain
     - name: |
-        make -j || exit -1
-    - timeout: 800
-    - unless: test -x /tmp/ebbrt/toolchain/sysroot/usr/bin/x86_64-pc-ebbrt-g++
-    - require:
-      - git: https://github.com/sesa/ebbrt.git
-
-ebbrt-hosted:
-  cmd.run:
-    - cwd: /tmp/ebbrt/hosted
-    - name: |
-        cmake . || exit -1
-        make -j install || exit -1
-    - env:
-      - EBBRT_SRCDIR: '/tmp/ebbrt'
-      - EBBRT_SYSROOT: '/tmp/ebbrt/toolchain/sysroot'
+        make || exit -1
     - timeout: 300
-    - unless: test -a /tmp/ebbrt/hosted/usr/lib/libEbbRT.a
+    - unless: test -x /tmp/ebbrt/baremetal/ext/EbbRT-toolchain/install/bin/x86_64-pc-ebbrt-g++
     - require:
-      - cmd: ebbrt-toolchain-fetched
-      - git: https://github.com/sesa/ebbrt.git
-
-helloworld:
-  cmd.run:
-    - cwd: /tmp/ebbrt/apps/helloworld
-    - env:
-      - EBBRT_SRCDIR: '/tmp/ebbrt'
-      - EBBRT_SYSROOT: '/tmp/ebbrt/toolchain/sysroot'
-    - name: |
-        make -j || exit -1
-    - require:
-      - cmd: ebbrt-hosted
-
-pull-docker-files:
-  cmd.run:
-    - name: |
-        docker pull ebbrt/kvm-qemu:latest || exit -1
-        docker pull ebbrt/kvm-qemu:debug || exit -1
-    - require:
-      - sls: docker
+       - git: https://github.com/sesa/ebbrt.git

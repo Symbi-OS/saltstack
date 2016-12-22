@@ -31,11 +31,10 @@ ebbrt-memcached-built:
   cmd.run:
     - cwd: /tmp/ebbrt-memcached
     - name: |
-        cmake -DCMAKE_TOOLCHAIN_FILE=/tmp/ebbrt/baremetal/cmake/ebbrt.cmake \
+        cmake -DCMAKE_TOOLCHAIN_FILE=/tmp/ebbrt/src/cmake/ebbrt.cmake \
         -DCMAKE_BUILD_TYPE=Release . || exit -1
         make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
     - env:
-      - EBBRT_SRCDIR: '/tmp/ebbrt'
       - EBBRT_SYSROOT: '/tmp/ebbrt/toolchain/sysroot'
     - unless: test -x /tmp/ebbrt-memcached/memcached.elf32
     - timeout: 300
