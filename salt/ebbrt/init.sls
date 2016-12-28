@@ -5,7 +5,6 @@ include:
 ebbrt-build-depends:
   pkg.installed:
     - refresh: true
-    - timeout: 300
     - pkgs:
        - automake
        - build-essential
@@ -35,7 +34,6 @@ install-capnproto:
         CXXFLAGS="-O2 -DNDEBUG -fpermissive" ./configure || exit -1
         make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
         make install
-    - timeout: 300
     - unless: test -x /usr/local/bin/capnp
     - require:
         - archive: extract-capnproto-tarball
@@ -52,27 +50,23 @@ https://github.com/sesa/ebbrt.git:
 ebbrt-toolchain-fetched:
   cmd.run:
     - cwd: /tmp/ebbrt/toolchain
-    - name: |
-        make ebbrt-build || exit -1
-        make ebbrt-install || exit -1
-    - timeout: 800
+    - name: make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
+    - timeout: 2000
     - unless: test -x /tmp/ebbrt/toolchain/sysroot/usr/bin/x86_64-pc-ebbrt-g++
     - require:
       - git: https://github.com/sesa/ebbrt.git
 
 ebbrt-hosted:
   cmd.run:
-    - cwd: /tmp/ebbrt/hosted
+    - cwd: /tmp/ebbrt/
     - name: |
-        mkdir build install || exit -1
+        mkdir -p build install || exit -1
         cd build
-        cmake ..  || exit -1
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/ebbrt/install ../src  || exit -1
         make -j install || exit -1
     - env:
-      - CMAKE_BUILD_TYPE: 'Release'
-      - CMAKE_INSTALL_PREFIX: '/tmp/ebbrt/hosted/install'
     - timeout: 300
-    - unless: test -a /tmp/ebbrt/hosted/install/lib/libEbbRT.a
+    - unless: test -a /tmp/ebbrt/install/lib/libEbbRT.a
     - require:
       - cmd: ebbrt-toolchain-fetched
       - git: https://github.com/sesa/ebbrt.git
@@ -82,7 +76,7 @@ helloworld:
     - cwd: /tmp/ebbrt/apps/helloworld
     - env:
       - EBBRT_SYSROOT: '/tmp/ebbrt/toolchain/sysroot'
-      - CMAKE_PREFIX_PATH: '/tmp/ebbrt/hosted/install'
+      - CMAKE_PREFIX_PATH: '/tmp/ebbrt/install'
     - name: |
         make -j || exit -1
     - require:
