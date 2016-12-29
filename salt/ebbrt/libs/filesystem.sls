@@ -1,5 +1,5 @@
 include:
-  - ebbrt.init
+  - ebbrt
 
 filesystem-hosted:
   cmd.run:
@@ -7,7 +7,7 @@ filesystem-hosted:
     - name: |
         mkdir -p buildh || exit -1
         cd buildh
-        cmake -DCMAKE_INSTALL_PREFIX=/tmp/ebbrt/install -DCMAKE_PREFIX_PATH=/tmp/ebbrt/install -DCMAKE_BUILD_TYPE=Release ..  || exit -1
+        cmake -DCMAKE_INSTALL_PREFIX=/tmp/ebbrt/install -DCMAKE_PREFIX_PATH=/tmp/ebbrt/install ..  || exit -1
         make -j install || exit -1
     - timeout: 300
    
@@ -19,6 +19,6 @@ filesystem-native:
     - name: |
         mkdir -p buildn || exit -1
         cd buildn
-        cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/tmp/ebbrt/toolchain/sysroot/ -DCMAKE_TOOLCHAIN_FILE=/tmp/ebbrt/toolchain/sysroot/usr/misc/ebbrt.cmake -DCMAKE_PREFIX_PATH=/tmp/ebbrt/toolchain/sysroot ..  || exit -1
+        cmake -DCMAKE_INSTALL_PREFIX=/tmp/ebbrt/toolchain/sysroot/ -DCMAKE_TOOLCHAIN_FILE=/tmp/ebbrt/toolchain/sysroot/usr/misc/ebbrt.cmake -DCMAKE_PREFIX_PATH=/tmp/ebbrt/toolchain/sysroot ..  || exit -1
         make -j install || exit -1
     - timeout: 300
