@@ -1,12 +1,13 @@
 include:
   - qemu
-  - docker
+    #  - docker
 
 ebbrt-build-depends:
   pkg.installed:
     - refresh: true
     - pkgs:
        - automake
+       - netcat
        - build-essential
        - git
        - libtool 
@@ -50,7 +51,7 @@ https://github.com/sesa/ebbrt.git:
 ebbrt-toolchain-fetched:
   cmd.run:
     - cwd: /tmp/ebbrt/toolchain
-    - name: make -j {{salt['grains.get']('num_cpus', '1')}} || exit -1
+    - name: make -j || exit -1
     - timeout: 2000
     - unless: test -x /tmp/ebbrt/toolchain/sysroot/usr/bin/x86_64-pc-ebbrt-g++
     - require:
@@ -87,5 +88,5 @@ pull-docker-files:
     - name: |
         docker pull ebbrt/kvm-qemu:latest || exit -1
         docker pull ebbrt/kvm-qemu:debug || exit -1
-    - require:
-      - sls: docker
+    #- require:
+      #- sls: docker
