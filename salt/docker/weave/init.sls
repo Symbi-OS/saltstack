@@ -1,6 +1,25 @@
+{% set kv_host = salt['pillar.get']('docker:kv:host')%}
+
+include:
+  - docker
+
 install_weave:
   cmd.run:
     - name: |
         export CHECKPOINT_DISABLE=1
-        curl -L git.io/weave -o /usr/local/bin/weave || exit -1
+        wget -O /usr/local/bin/weave https://github.com/weaveworks/weave/releases/download/latest_release/weave || exit -1
         chmod a+x /usr/local/bin/weave || exit -1
+        service docker restart
+    - require:
+      - sls: docker
+
+launch_weave:
+  cmd.run:
+    - name: |
+        export EBBRT_NODE_ALLOCATOR_DEFAULT_NETWORK_ARGUMENTS=weave
+        weave launch
+        weave connect {{ kv_host }} 
+        weave expose
+    - require:
+      - cmd: install_weave
+

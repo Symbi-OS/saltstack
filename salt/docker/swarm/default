@@ -1,0 +1,6 @@
+{% set kv_port = salt['pillar.get']('docker:kv:port','8500')%}
+{% set d_port = salt['pillar.get']('docker:port','2375')%}
+{% set kv_host = salt['pillar.get']('docker:kv:host','192.168.1.135')%}
+{% set kv_type = salt['pillar.get']('docker:kv:type')%}
+DOCKER_OPTS=" -H tcp://0.0.0.0:{{ d_port }} -H unix:///var/run/docker.sock -s=devicemapper --cluster-store {{ kv_type }}://{{ kv_host }}:{{ kv_port }}  --cluster-advertise {{salt['grains.get']('id')}}:{{ d_port }} --bridge=weave "
+DOCKER_NOFILE=1000000

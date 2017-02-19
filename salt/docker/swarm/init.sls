@@ -1,23 +1,21 @@
 include:
   - misc.hostname
-  - docker.install
+  - docker.weave
 
-/etc/systemd/system/docker.service:
+/etc/default/docker.swarm:
   file.managed:
-    - source: salt://docker/swarm/docker.service
+    - name: /etc/default/docker
+    - source: salt://docker/swarm/default
     - template: jinja
     - user: root
     - group: root
     - mode: 644
     - makedirs: true
-
-systemctl daemon-reload:
-  cmd.run: []
-
-start_docker:
-  cmd.run:
-    - name: systemctl restart docker
     - require:
-      - sls: docker.install
-      - cmd: systemctl daemon-reload
-      - file: /etc/systemd/system/docker.service
+      - sls: docker.weave 
+
+docker-swarm-running:
+  cmd.run:
+    - name: service docker restart
+    - onchanges:
+      - file: /etc/default/docker.swarm
