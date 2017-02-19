@@ -2,7 +2,7 @@
 
 #### Set up swarm and install dependencies
 ```
-    salt <minion_id> state.apply docker.swarm
+$ salt <minion_id> state.apply docker.swarm
 ```
 
 #### Deploy Consul, Manager and Workers
@@ -20,7 +20,7 @@ docker:
 To deploy execute the following:
 
 ```
-    salt <minion_id> state.apply docker.swarm.consul 
-    salt <minion_id> state.apply docker.swarm.manager
-    salt <minion_id> state.apply docker.swarm.worker 
+$ salt <minion_id> state.apply docker.swarm.consul 
+$ salt <minion_id> state.apply docker.swarm.manager
+$ salt <minion_id> state.apply docker.swarm.worker 
 ```
