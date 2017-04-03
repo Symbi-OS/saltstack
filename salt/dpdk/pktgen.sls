@@ -9,10 +9,10 @@ pktgen-depends:
 extract-pktgen:
   archive.extracted:
     - name: /root/pktgen
-    - source: http://dpdk.org/browse/apps/pktgen-dpdk/snapshot/pktgen-dpdk-3.0.06.tar.gz
-    - source_hash: md5=2e22b58527bdde70e52b813912436b45
+    - source: http://dpdk.org/browse/apps/pktgen-dpdk/snapshot/pktgen-3.2.0.tar.xz
+    - source_hash: md5=75cb8b3c5f5cd77426940a6673fe2d73
     - archive_format: tar
-    - tar_options: z --strip-components=1
+    - tar_options: -x --strip-components=1
     - unless: test -d /root/pktgen
 
 build-pktgen:

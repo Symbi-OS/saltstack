@@ -14,11 +14,11 @@ dpdk-depends:
 extract-dpdk:
   archive.extracted:
     - name: /root/dpdk_src
-    - source: http://dpdk.org/browse/dpdk/snapshot/dpdk-16.07-rc2.tar.gz
-    - source_hash: md5=d3c5b6b744fe94f54c1c05fa49cab17b
+    - source: http://fast.dpdk.org/rel/dpdk-16.11.1.tar.xz
+    - source_hash: md5=b867eab1f357340d105e92f2e9d8f7de
     - archive_format: tar
-    - tar_options: z --strip-components=1
-    - unless: test -d /root/dpdk_src
+    - tar_options: -x --strip-components=1
+    #- unless: test -d /root/dpdk_src
 
 #config-2M-pages:
 #  cmd.run: |
@@ -56,7 +56,7 @@ build-helloworld:
     - require:
       - cmd: build-dpdk 
 
-/root/dpdk_src/tools/dpdk_nic_bind.py -s:
+/root/dpdk_src/tools/dpdk-devbind.py -s:
     cmd.run:
       - require:
         - archive: extract-dpdk
