@@ -1,6 +1,6 @@
 include:
   - qemu
-    #  - docker
+  - docker
 
 ebbrt-build-depends:
   pkg.installed:
@@ -88,5 +88,5 @@ pull-docker-files:
     - name: |
         docker pull ebbrt/kvm-qemu:latest || exit -1
         docker pull ebbrt/kvm-qemu:debug || exit -1
-    #- require:
-      #- sls: docker
+    - require:
+      - sls: docker

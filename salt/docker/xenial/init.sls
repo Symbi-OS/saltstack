@@ -1,9 +1,9 @@
 include:
-  - docker/install
+  - docker/xenial/install
 
 /etc/systemd/system/docker.service:
   file.managed:
-    - source: salt://docker/docker.service
+    - source: salt://docker/xenial/docker.service
     - template: jinja
     - user: root
     - group: root
@@ -19,7 +19,7 @@ docker-service:
     - enable: true
     - reload: true
     - require:
-      - sls: docker/install
+      - sls: docker/xenial/install
       - cmd: systemctl daemon-reload
     - watch:
       - file: /etc/systemd/system/docker.service

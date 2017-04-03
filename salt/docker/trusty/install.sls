@@ -22,7 +22,8 @@ net.ipv4.ip_forward:
    - name: deb https://apt.dockerproject.org/repo ubuntu-trusty main
    - dist: ubuntu-trusty
    - file: /etc/apt/sources.list.d/docker.list
-   - keyserver: hkp://pgp.mit.edu:80 
+   #- keyserver: hkp://pgp.mit.edu:80 
+   - keyserver: hkp://keyserver.ubuntu.com
    - keyid: 58118E89F3A912897C070ADBF76221572C52609D
    - refresh_db: true
    - require:
