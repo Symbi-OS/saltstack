@@ -16,8 +16,9 @@ install_weave:
 launch_weave:
   cmd.run:
     - name: |
+        ip link set eth2 mtu 8916
         export EBBRT_NODE_ALLOCATOR_DEFAULT_NETWORK_ARGUMENTS=weave
-        weave launch
+        WEAVE_MTU=8916 weave launch
         weave connect {{ kv_host }} 
         weave expose
     - require:
