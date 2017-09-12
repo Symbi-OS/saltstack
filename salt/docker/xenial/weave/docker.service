@@ -1,0 +1,10 @@
+[Service]
+{% set kv_port = salt['pillar.get']('docker:kv:port','8500')%}
+{% set d_port = salt['pillar.get']('docker:port','2375')%}
+ExecStart=
+
+{% for manager, addrs in salt['mine.get']('role:manager', 'network.interfaces', expr_form='grain').items() %} 
+
+ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:{{ d_port }} -H unix:///var/run/docker.sock -s=devicemapper --cluster-store consul://{{ manager }}:{{ kv_port }}  --cluster-advertise {{salt['grains.get']('id')}}:{{ d_port }} 
+
+{% endfor %} 

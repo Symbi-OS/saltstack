@@ -1,7 +1,7 @@
 {% set kv_host = salt['pillar.get']('docker:kv:host')%}
 
 include:
-  - docker
+  - docker.trusty
 
 install_weave:
   cmd.run:
@@ -11,7 +11,7 @@ install_weave:
         chmod a+x /usr/local/bin/weave || exit -1
         service docker restart
     - require:
-      - sls: docker
+      - sls: docker.trusty
 
 launch_weave:
   cmd.run:
