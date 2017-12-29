@@ -1,0 +1,5 @@
+{% for server, addrs in salt['mine.get']('roles:master', 'network.interfaces',
+expr_form='grain').items() %}
+{{ server }} 
+{% endfor %}
+end

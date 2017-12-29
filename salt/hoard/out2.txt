@@ -1,0 +1,316 @@
+192.168.1.221:
+    Thread #0 has been pinned to CPU 0
+    EbbRT Copyright 2013-2015 Boston University SESA Developers
+    e820::map:
+    000000000000000000-0x000000000009fbff usable
+    0x000000000009fc00-0x000000000009ffff reserved
+    0x00000000000f0000-0x00000000000fffff reserved
+    0x0000000000100000-0x00000000bffdffff usable
+    0x00000000bffe0000-0x00000000bfffffff reserved
+    0x00000000feffc000-0x00000000feffffff reserved
+    0x00000000fffc0000-0x00000000ffffffff reserved
+    0x0000000100000000-0x000000013fffffff usable
+    Early Page Allocator Reserve 0x0000000000009500-0x000000000000955f
+    Early Page Allocator Reserve 0x0000000000827000-0x0000000000827073
+    Early Page Allocator Free 0x0000000000828000-0x000000003fffffff
+    Early Page Allocator Free 0x0000000040000000-0x00000000bffdffff
+    Early Page Allocator Free 0x0000000100000000-0x000000013fffffff
+    ACPI: RSDP 0xf62b0 000014 (v00 BOCHS )
+    ACPI: RSDT 0xbffe16b4 000034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+    ACPI: FACP 0xbffe0bda 000074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+    ACPI: DSDT 0xbffe0040 000B9A (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+    ACPI: FACS 0xbffe0000 000040
+    ACPI: SSDT 0xbffe0c4e 0009B6 (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+    ACPI: APIC 0xbffe1604 000078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+    ACPI: HPET 0xbffe167c 000038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+    Local APIC: ACPI ID: 0 APIC ID: 0
+    IO APIC: ID: 0
+    Interrupt Override: 0 -> 2
+    Interrupt Override: 5 -> 5
+    Interrupt Override: 9 -> 9
+    Interrupt Override: 10 -> 10
+    Interrupt Override: 11 -> 11
+    NMI on all processors: LINT1
+    Early Page Allocator NUMA mapping 0x0000000000828000-0x000000003fff7fff -> 0
+    Early Page Allocator NUMA mapping 0x0000000040000000-0x00000000bffdffff -> 0
+    Early Page Allocator NUMA mapping 0x0000000100000000-0x000000013fffffff -> 0
+    Allocated fffffffeff800000 - fffffffeffffffff
+    System initialization complete
+    Allocated fffffffeff000000 - fffffffeff7fffff
+    Running threadtest for 1 threads, 1000 iterations, 100000 objects, 0 work and 8 objSize...
+    hoardthreadtest time elapsed = 7659101370 ~ns
+    Power Off.
+    Thread #0 has been pinned to CPU 0
+    Thread #1 has been pinned to CPU 1
+    EbbRT Copyright 2013-2015 Boston University SESA Developers
+    e820::map:
+    000000000000000000-0x000000000009fbff usable
+    0x000000000009fc00-0x000000000009ffff reserved
+    0x00000000000f0000-0x00000000000fffff reserved
+    0x0000000000100000-0x00000000bffdffff usable
+    0x00000000bffe0000-0x00000000bfffffff reserved
+    0x00000000feffc000-0x00000000feffffff reserved
+    0x00000000fffc0000-0x00000000ffffffff reserved
+    0x0000000100000000-0x000000013fffffff usable
+    Early Page Allocator Reserve 0x0000000000009500-0x000000000000955f
+    Early Page Allocator Reserve 0x0000000000827000-0x0000000000827073
+    Early Page Allocator Free 0x0000000000828000-0x000000003fffffff
+    Early Page Allocator Free 0x0000000040000000-0x00000000bffdffff
+    Early Page Allocator Free 0x0000000100000000-0x000000013fffffff
+    ACPI: RSDP 0xf6250 000014 (v00 BOCHS )
+    ACPI: RSDT 0xbffe16fd 000034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+    ACPI: FACP 0xbffe0bda 000074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+    ACPI: DSDT 0xbffe0040 000B9A (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+    ACPI: FACS 0xbffe0000 000040
+    ACPI: SSDT 0xbffe0c4e 0009F7 (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+    ACPI: APIC 0xbffe1645 000080 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+    ACPI: HPET 0xbffe16c5 000038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+    Local APIC: ACPI ID: 0 APIC ID: 0
+    Local APIC: ACPI ID: 1 APIC ID: 1
+    IO APIC: ID: 0
+    Interrupt Override: 0 -> 2
+    Interrupt Override: 5 -> 5
+    Interrupt Override: 9 -> 9
+    Interrupt Override: 10 -> 10
+    Interrupt Override: 11 -> 11
+    NMI on all processors: LINT1
+    Early Page Allocator NUMA mapping 0x0000000000828000-0x000000003fff7fff -> 0
+    Early Page Allocator NUMA mapping 0x0000000040000000-0x00000000bffdffff -> 0
+    Early Page Allocator NUMA mapping 0x0000000100000000-0x000000013fffffff -> 0
+    Allocated fffffffeff800000 - fffffffeffffffff
+    3d5c0000
+    Core 1 online
+    Allocated fffffffeff000000 - fffffffeff7fffff
+    System initialization complete
+    Allocated fffffffefe800000 - fffffffefeffffff
+    Running threadtest for 2 threads, 1000 iterations, 100000 objects, 0 work and 8 objSize...
+    hoardthreadtest time elapsed = 4382028077 ~ns
+    Power Off.
+    Thread #0 has been pinned to CPU 0
+    Thread #1 has been pinned to CPU 1
+    Thread #2 has been pinned to CPU 2
+    Thread #3 has been pinned to CPU 3
+    EbbRT Copyright 2013-2015 Boston University SESA Developers
+    e820::map:
+    000000000000000000-0x000000000009fbff usable
+    0x000000000009fc00-0x000000000009ffff reserved
+    0x00000000000f0000-0x00000000000fffff reserved
+    0x0000000000100000-0x00000000bffdefff usable
+    0x00000000bffdf000-0x00000000bfffffff reserved
+    0x00000000feffc000-0x00000000feffffff reserved
+    0x00000000fffc0000-0x00000000ffffffff reserved
+    0x0000000100000000-0x000000013fffffff usable
+    Early Page Allocator Reserve 0x0000000000009500-0x000000000000955f
+    Early Page Allocator Reserve 0x0000000000827000-0x0000000000827073
+    Early Page Allocator Free 0x0000000000828000-0x000000003fffffff
+    Early Page Allocator Free 0x0000000040000000-0x00000000bffdefff
+    Early Page Allocator Free 0x0000000100000000-0x000000013fffffff
+    ACPI: RSDP 0xf6430 000014 (v00 BOCHS )
+    ACPI: RSDT 0xbffe14d7 000034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+    ACPI: FACP 0xbffe091a 000074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+    ACPI: DSDT 0xbffdfd80 000B9A (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+    ACPI: FACS 0xbffdfd40 000040
+    ACPI: SSDT 0xbffe098e 000A81 (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+    ACPI: APIC 0xbffe140f 000090 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+    ACPI: HPET 0xbffe149f 000038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+    Local APIC: ACPI ID: 0 APIC ID: 0
+    Local APIC: ACPI ID: 1 APIC ID: 1
+    Local APIC: ACPI ID: 2 APIC ID: 2
+    Local APIC: ACPI ID: 3 APIC ID: 3
+    IO APIC: ID: 0
+    Interrupt Override: 0 -> 2
+    Interrupt Override: 5 -> 5
+    Interrupt Override: 9 -> 9
+    Interrupt Override: 10 -> 10
+    Interrupt Override: 11 -> 11
+    NMI on all processors: LINT1
+    Early Page Allocator NUMA mapping 0x0000000000828000-0x000000003fff7fff -> 0
+    Early Page Allocator NUMA mapping 0x0000000040000000-0x00000000bffdefff -> 0
+    Early Page Allocator NUMA mapping 0x0000000100000000-0x000000013fffffff -> 0
+    Allocated fffffffeff800000 - fffffffeffffffff
+    838000
+    839000
+    83a000
+    Core 1 online
+    Core 2 online
+    Allocated fffffffeff000000 - fffffffeff7fffff
+    Core 3 online
+    Allocated fffffffefe800000 - fffffffefeffffff
+    Allocated fffffffefe000000 - fffffffefe7fffff
+    System initialization complete
+    Allocated fffffffefd800000 - fffffffefdffffff
+    Running threadtest for 4 threads, 1000 iterations, 100000 objects, 0 work and 8 objSize...
+    hoardthreadtest time elapsed = 2145352789 ~ns
+    Power Off.
+    Thread #0 has been pinned to CPU 0
+    Thread #1 has been pinned to CPU 1
+    Thread #2 has been pinned to CPU 2
+    Thread #3 has been pinned to CPU 3
+    Thread #4 has been pinned to CPU 4
+    Thread #5 has been pinned to CPU 5
+    Thread #6 has been pinned to CPU 6
+    Thread #7 has been pinned to CPU 7
+    EbbRT Copyright 2013-2015 Boston University SESA Developers
+    e820::map:
+    000000000000000000-0x000000000009fbff usable
+    0x000000000009fc00-0x000000000009ffff reserved
+    0x00000000000f0000-0x00000000000fffff reserved
+    0x0000000000100000-0x00000000bffdefff usable
+    0x00000000bffdf000-0x00000000bfffffff reserved
+    0x00000000feffc000-0x00000000feffffff reserved
+    0x00000000fffc0000-0x00000000ffffffff reserved
+    0x0000000100000000-0x000000013fffffff usable
+    Early Page Allocator Reserve 0x0000000000009500-0x000000000000955f
+    Early Page Allocator Reserve 0x0000000000827000-0x0000000000827073
+    Early Page Allocator Free 0x0000000000828000-0x000000003fffffff
+    Early Page Allocator Free 0x0000000040000000-0x00000000bffdefff
+    Early Page Allocator Free 0x0000000100000000-0x000000013fffffff
+    ACPI: RSDP 0xf63e0 000014 (v00 BOCHS )
+    ACPI: RSDT 0xbffe150c 000034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+    ACPI: FACP 0xbffe081a 000074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+    ACPI: DSDT 0xbffdfc80 000B9A (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+    ACPI: FACS 0xbffdfc40 000040
+    ACPI: SSDT 0xbffe088e 000B96 (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+    ACPI: APIC 0xbffe1424 0000B0 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+    ACPI: HPET 0xbffe14d4 000038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+    Local APIC: ACPI ID: 0 APIC ID: 0
+    Local APIC: ACPI ID: 1 APIC ID: 1
+    Local APIC: ACPI ID: 2 APIC ID: 2
+    Local APIC: ACPI ID: 3 APIC ID: 3
+    Local APIC: ACPI ID: 4 APIC ID: 4
+    Local APIC: ACPI ID: 5 APIC ID: 5
+    Local APIC: ACPI ID: 6 APIC ID: 6
+    Local APIC: ACPI ID: 7 APIC ID: 7
+    IO APIC: ID: 0
+    Interrupt Override: 0 -> 2
+    Interrupt Override: 5 -> 5
+    Interrupt Override: 9 -> 9
+    Interrupt Override: 10 -> 10
+    Interrupt Override: 11 -> 11
+    NMI on all processors: LINT1
+    Early Page Allocator NUMA mapping 0x0000000000828000-0x000000003fff7fff -> 0
+    Early Page Allocator NUMA mapping 0x0000000040000000-0x00000000bffdefff -> 0
+    Early Page Allocator NUMA mapping 0x0000000100000000-0x000000013fffffff -> 0
+    Allocated fffffffeff800000 - fffffffeffffffff
+    838000
+    839000
+    83a000
+    83b000
+    83c000
+    83d000
+    83e000
+    Core 1 online
+    Core 6 online
+    Core 7 online
+    Core 3 online
+    Allocated fffffffeff000000 - fffffffeff7fffff
+    Core 4 online
+    Allocated fffffffefe800000 - fffffffefeffffff
+    Core 2 online
+    Allocated fffffffefe000000 - fffffffefe7fffff
+    Core 5 online
+    Allocated fffffffefd800000 - fffffffefdffffff
+    Allocated fffffffefd000000 - fffffffefd7fffff
+    Allocated fffffffefc800000 - fffffffefcffffff
+    Allocated fffffffefc000000 - fffffffefc7fffff
+    System initialization complete
+    Allocated fffffffefb800000 - fffffffefbffffff
+    Running threadtest for 8 threads, 1000 iterations, 100000 objects, 0 work and 8 objSize...
+    hoardthreadtest time elapsed = 1410693751 ~ns
+    Power Off.
+    Thread #0 has been pinned to CPU 0
+    Thread #1 has been pinned to CPU 1
+    Thread #2 has been pinned to CPU 2
+    Thread #3 has been pinned to CPU 3
+    Thread #4 has been pinned to CPU 4
+    Thread #5 has been pinned to CPU 5
+    Thread #6 has been pinned to CPU 6
+    Thread #7 has been pinned to CPU 7
+    Thread #8 has been pinned to CPU 8
+    Thread #9 has been pinned to CPU 9
+    Thread #10 has been pinned to CPU 10
+    Thread #11 has been pinned to CPU 11
+    EbbRT Copyright 2013-2015 Boston University SESA Developers
+    e820::map:
+    000000000000000000-0x000000000009fbff usable
+    0x000000000009fc00-0x000000000009ffff reserved
+    0x00000000000f0000-0x00000000000fffff reserved
+    0x0000000000100000-0x00000000bffdefff usable
+    0x00000000bffdf000-0x00000000bfffffff reserved
+    0x00000000feffc000-0x00000000feffffff reserved
+    0x00000000fffc0000-0x00000000ffffffff reserved
+    0x0000000100000000-0x000000013fffffff usable
+    Early Page Allocator Reserve 0x0000000000009500-0x000000000000955f
+    Early Page Allocator Reserve 0x0000000000827000-0x0000000000827074
+    Early Page Allocator Free 0x0000000000828000-0x000000003fffffff
+    Early Page Allocator Free 0x0000000040000000-0x00000000bffdefff
+    Early Page Allocator Free 0x0000000100000000-0x000000013fffffff
+    ACPI: RSDP 0xf6390 000014 (v00 BOCHS )
+    ACPI: RSDT 0xbffe1540 000034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+    ACPI: FACP 0xbffe071a 000074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+    ACPI: DSDT 0xbffdfb80 000B9A (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+    ACPI: FACS 0xbffdfb40 000040
+    ACPI: SSDT 0xbffe078e 000CAA (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+    ACPI: APIC 0xbffe1438 0000D0 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+    ACPI: HPET 0xbffe1508 000038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+    Local APIC: ACPI ID: 0 APIC ID: 0
+    Local APIC: ACPI ID: 1 APIC ID: 1
+    Local APIC: ACPI ID: 2 APIC ID: 2
+    Local APIC: ACPI ID: 3 APIC ID: 3
+    Local APIC: ACPI ID: 4 APIC ID: 4
+    Local APIC: ACPI ID: 5 APIC ID: 5
+    Local APIC: ACPI ID: 6 APIC ID: 6
+    Local APIC: ACPI ID: 7 APIC ID: 7
+    Local APIC: ACPI ID: 8 APIC ID: 8
+    Local APIC: ACPI ID: 9 APIC ID: 9
+    Local APIC: ACPI ID: 10 APIC ID: 10
+    Local APIC: ACPI ID: 11 APIC ID: 11
+    IO APIC: ID: 0
+    Interrupt Override: 0 -> 2
+    Interrupt Override: 5 -> 5
+    Interrupt Override: 9 -> 9
+    Interrupt Override: 10 -> 10
+    Interrupt Override: 11 -> 11
+    NMI on all processors: LINT1
+    Early Page Allocator NUMA mapping 0x0000000000828000-0x000000003fff7fff -> 0
+    Early Page Allocator NUMA mapping 0x0000000040000000-0x00000000bffdefff -> 0
+    Early Page Allocator NUMA mapping 0x0000000100000000-0x000000013fffffff -> 0
+    Allocated fffffffeff800000 - fffffffeffffffff
+    838000
+    839000
+    83a000
+    83b000
+    83c000
+    83d000
+    83e000
+    83f000
+    3d5c0000
+    3d5c1000
+    3d5c2000
+    Core 3 online
+    Core 6 online
+    Core 7 online
+    Core 11 online
+    Core 4 online
+    Core 9 online
+    Core 1 online
+    Core 8 online
+    Core 10 online
+    Allocated fffffffeff000000 - fffffffeff7fffff
+    Core 5 online
+    Core 2 online
+    Allocated fffffffefe800000 - fffffffefeffffff
+    Allocated fffffffefe000000 - fffffffefe7fffff
+    Allocated fffffffefd800000 - fffffffefdffffff
+    Allocated fffffffefd000000 - fffffffefd7fffff
+    Allocated fffffffefc800000 - fffffffefcffffff
+    Allocated fffffffefc000000 - fffffffefc7fffff
+    Allocated fffffffefb800000 - fffffffefbffffff
+    Allocated fffffffefb000000 - fffffffefb7fffff
+    Allocated fffffffefa800000 - fffffffefaffffff
+    Allocated fffffffefa000000 - fffffffefa7fffff
+    System initialization complete
+    Allocated fffffffef9800000 - fffffffef9ffffff
+    Running threadtest for 12 threads, 1000 iterations, 100000 objects, 0 work and 8 objSize...
+    hoardthreadtest time elapsed = 3306750408 ~ns
+    Power Off.
