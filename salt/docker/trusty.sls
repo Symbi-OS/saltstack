@@ -1,9 +1,9 @@
 include:
-  - docker/trusty/install
+  - docker/install
 
 /etc/default/docker:
   file.managed:
-    - source: salt://docker/trusty/default
+    - source: salt://docker/default
     - template: jinja
     - user: root
     - group: root
@@ -16,6 +16,6 @@ docker-service:
     - enable: true
     - reload: true
     - require:
-      - sls: docker/trusty/install
+      - sls: docker/install
     - watch:
       - file: /etc/default/docker

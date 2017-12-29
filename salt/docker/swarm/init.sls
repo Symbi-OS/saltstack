@@ -1,6 +1,6 @@
 include:
   - misc.hostname
-  - docker.trusty.weave
+  - docker.weave
 
 /etc/default/docker.swarm:
   file.managed:
