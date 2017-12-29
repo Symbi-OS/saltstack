@@ -10,7 +10,7 @@ fr-depends:
       - libgsl0-dev
       - libboost-program-options-dev
 
-https://github.com/jas91/EbbRT-fetalRecon.git:
+https://github.com/SESA/EbbRT-fetalRecon.git:
   git.latest:
     - target: /tmp/EbbRT-fetalRecon
     - submodules: true
@@ -23,7 +23,7 @@ mkdirs:
     - name: |
         mkdir -p /tmp/EbbRT-fetalRecon/build/bm
     - require:
-      - git: https://github.com/jas91/EbbRT-fetalRecon.git
+      - git: https://github.com/SESA/EbbRT-fetalRecon.git
 
 nativeCmake:
   cmd.run:
@@ -35,7 +35,7 @@ nativeCmake:
     - unless:
       - exists: /tmp/EbbRT-fetalRecon/build/bm/reconstruction.elf32 
     - require:
-      - git: https://github.com/jas91/EbbRT-fetalRecon.git
+      - git: https://github.com/SESA/EbbRT-fetalRecon.git
       - cmd: mkdirs
 
 nativeMake:
