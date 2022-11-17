@@ -9,7 +9,7 @@ import glob
 def set_perf(governor):
     with open(governor, 'w') as f:
         f.write('performance')
-        print governor + ' -> performance'
+        print (governor + ' -> performance')
     return
 
 for cpu in glob.iglob('/sys/devices/system/cpu/cpu[0-9]*'):
